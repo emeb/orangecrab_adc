@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name ocadc-rescue)(type Legacy)(uri ${KIPRJMOD}/ocadc-rescue.lib)(options "")(descr ""))
+)
