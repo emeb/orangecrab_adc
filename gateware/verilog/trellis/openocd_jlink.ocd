@@ -1,0 +1,14 @@
+# JTAG programming of Lattice ECP5 FPGA via J-Link
+
+source [find interface/jlink.cfg]
+transport select jtag
+reset_config none
+adapter_khz 8000
+
+# JTAG TAPs
+jtag newtap lfe5u25 tap -expected-id 0x41111043 -irlen 8 -irmask 0xFF -ircapture 0x5
+#jtag newtap lfe5u45 tap -expected-id 0x41112043 -irlen 8 -irmask 0xFF -ircapture 0x5
+#jtag newtap lfe5u85 tap -expected-id 0x41113043 -irlen 8 -irmask 0xFF -ircapture 0x5
+
+init
+scan_chain

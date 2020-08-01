@@ -1,0 +1,122 @@
+[*]
+[*] GTKWave Analyzer v3.3.101 (w)1999-2019 BSI
+[*] Wed Jul 29 23:51:55 2020
+[*]
+[dumpfile] "/home/ericb/KBADC/lattice/ocadc/verilog/icarus/tb_ocadc.vcd"
+[dumpfile_mtime] "Wed Jul 29 23:51:27 2020"
+[dumpfile_size] 196681575
+[savefile] "/home/ericb/KBADC/lattice/ocadc/verilog/icarus/tb_ocadc.gtkw"
+[timestart] 0
+[size] 1377 600
+[pos] -1 -1
+*-29.978966 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_ocadc.
+[treeopen] tb_ocadc.uut.
+[treeopen] tb_ocadc.uut.u_ddc.
+[sst_width] 219
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@200
+-tb
+@28
+tb_ocadc.BTN_N
+tb_ocadc.LED1
+tb_ocadc.LED2
+tb_ocadc.LED3
+tb_ocadc.PDM_L
+tb_ocadc.PDM_R
+tb_ocadc.RST_N
+@22
+tb_ocadc.adc_data[9:0]
+@28
+tb_ocadc.clk_adc
+tb_ocadc.frq
+tb_ocadc.phs
+@200
+-uut
+@28
+tb_ocadc.uut.BTN_N
+tb_ocadc.uut.CLK
+tb_ocadc.uut.LED1
+tb_ocadc.uut.LED2
+tb_ocadc.uut.LED3
+tb_ocadc.uut.PDM_L
+tb_ocadc.uut.PDM_R
+tb_ocadc.uut.RST_N
+tb_ocadc.uut.USB_DM
+tb_ocadc.uut.USB_DP
+tb_ocadc.uut.USB_PULLUP
+@8420
+tb_ocadc.uut.adc_data[9:0]
+@28
+tb_ocadc.uut.clk_adc
+tb_ocadc.uut.ddc_cic_shf[2:0]
+@22
+tb_ocadc.uut.ddc_frq[25:0]
+tb_ocadc.uut.ddc_i[15:0]
+@28
+tb_ocadc.uut.ddc_ns_ena
+@22
+tb_ocadc.uut.ddc_q[15:0]
+@28
+tb_ocadc.uut.ddc_v
+tb_ocadc.uut.dr[1:0]
+tb_ocadc.uut.reset
+@22
+tb_ocadc.uut.reset_cnt[7:0]
+@28
+tb_ocadc.uut.reset_sr
+@200
+-DDC
+@8420
+tb_ocadc.uut.u_ddc.cic_i[20:0]
+@22
+tb_ocadc.uut.u_ddc.cic_i_sat[15:0]
+tb_ocadc.uut.u_ddc.cic_i_shf[27:0]
+tb_ocadc.uut.u_ddc.cic_i_trim[15:0]
+@8420
+tb_ocadc.uut.u_ddc.cic_q[20:0]
+@22
+tb_ocadc.uut.u_ddc.cic_q_sat[15:0]
+tb_ocadc.uut.u_ddc.cic_q_shf[27:0]
+tb_ocadc.uut.u_ddc.cic_q_trim[15:0]
+@28
+tb_ocadc.uut.u_ddc.cic_shf[2:0]
+tb_ocadc.uut.u_ddc.cic_v
+tb_ocadc.uut.u_ddc.clk
+@22
+tb_ocadc.uut.u_ddc.dcnt[7:0]
+@28
+tb_ocadc.uut.u_ddc.dr[1:0]
+@22
+tb_ocadc.uut.u_ddc.drate[7:0]
+@28
+tb_ocadc.uut.u_ddc.ena_cic
+@22
+tb_ocadc.uut.u_ddc.frq[25:0]
+@8420
+tb_ocadc.uut.u_ddc.i_out[15:0]
+@22
+tb_ocadc.uut.u_ddc.in[9:0]
+@28
+tb_ocadc.uut.u_ddc.isatflg
+tb_ocadc.uut.u_ddc.ns_ena
+@8421
+tb_ocadc.uut.u_ddc.q_out[15:0]
+@28
+tb_ocadc.uut.u_ddc.qsatflg
+tb_ocadc.uut.u_ddc.reset
+@22
+tb_ocadc.uut.u_ddc.satcnt[6:0]
+tb_ocadc.uut.u_ddc.sathld[6:0]
+tb_ocadc.uut.u_ddc.satsum[6:0]
+@28
+tb_ocadc.uut.u_ddc.satval
+@8420
+tb_ocadc.uut.u_ddc.tuner_i[9:0]
+tb_ocadc.uut.u_ddc.tuner_q[9:0]
+@28
+tb_ocadc.uut.u_ddc.valid
+[pattern_trace] 1
+[pattern_trace] 0
