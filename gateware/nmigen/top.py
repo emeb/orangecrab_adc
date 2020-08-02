@@ -4,7 +4,8 @@
 from nmigen import *
 from ddc import *
 from pdm_dac import *
-from orangecrab_r0_2 import *
+from nmigen_boards.orangecrab_r0_2 import OrangeCrabR0_2Platform
+from nmigen.build import *
 
 class top(Elaboratable):
     def elaborate(self, platform):
@@ -65,4 +66,23 @@ class top(Elaboratable):
 
         return m
 
-OrangeCrabR0_2Platform().build(top(), do_program=False)
+# if synthesizing hardware
+if __name__ == "__main__":
+    # add custom ADC support resources to std platform
+    platform = OrangeCrabR0_2Platform()
+    platform.add_resources([
+        Resource("ad9203", 0,
+            Subsignal("clk",    Pins("T17", dir="i"), Clock(48e6)),
+            Subsignal("data",   Pins("M18 N17 N15 B10 B9 C8 B8 A8 H2 J2", dir="i")),
+            Attrs(IO_TYPE="LVCMOS33", SLEWRATE="FAST")
+        ),
+        
+        Resource("pdm_out", 0,
+            Subsignal("l",   Pins("R18", dir="o")),
+            Subsignal("r",   Pins("N16", dir="o")),
+            Attrs(IO_TYPE="LVCMOS33", SLEWRATE="FAST")
+        )
+    ])
+    
+    # doit!
+    platform.build(top(), do_program=False)
