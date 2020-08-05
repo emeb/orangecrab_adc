@@ -3,6 +3,7 @@
 
 from nmigen import *
 from ddc import *
+from demods import *
 from pdm_dac import *
 from nmigen_boards.orangecrab_r0_2 import OrangeCrabR0_2Platform
 from nmigen.build import *
@@ -33,6 +34,7 @@ class top(Elaboratable):
         
         # instantiate the lower level blocks
         m.submodules.ddc = ddc()
+        m.submodules.demods = demods()
         m.submodules.dac_l = pdm_dac()
         m.submodules.dac_r = pdm_dac()
         
@@ -44,9 +46,15 @@ class top(Elaboratable):
             m.submodules.ddc.rate.eq(0),
             m.submodules.ddc.shift.eq(0),
             
+            # Demodulator
+            m.submodules.demods.input_i.eq(m.submodules.ddc.out_i),
+            m.submodules.demods.input_q.eq(m.submodules.ddc.out_q),
+            m.submodules.demods.type.eq(DemodType.AM),
+            m.submodules.demods.ena.eq(m.submodules.ddc.valid),
+            
             # DACs
-            m.submodules.dac_l.in_port.eq(m.submodules.ddc.out_i),
-            m.submodules.dac_r.in_port.eq(m.submodules.ddc.out_q),
+            m.submodules.dac_l.in_port.eq(m.submodules.demods.out_l),
+            m.submodules.dac_r.in_port.eq(m.submodules.demods.out_r),
             pdm_l.eq(m.submodules.dac_l.out_port),
             pdm_r.eq(m.submodules.dac_r.out_port),
             
