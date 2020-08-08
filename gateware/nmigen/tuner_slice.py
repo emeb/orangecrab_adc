@@ -11,11 +11,12 @@ class tuner_slice(Elaboratable):
         # save params
         self.dsz = dsz
         self.psz = psz
+        self.ssz = 16
         self.qshf = qshf
         
         # define the LUT contents
         sine_len = 2**(psz-2)
-        scl = (2**(dsz-1))-1
+        scl = (2**(self.ssz-1))-1
         data = np.zeros(sine_len, dtype=np.int)
         for i in np.arange(sine_len):
             data[i] = int(np.floor(np.sin((i+0.5)*np.pi/(2*sine_len))*scl + 0.5))
@@ -23,7 +24,7 @@ class tuner_slice(Elaboratable):
         #print(data)
         
         # create the LUT
-        self.LUT = Memory(width = dsz, depth = sine_len, init = data)
+        self.LUT = Memory(width = self.ssz, depth = sine_len, init = data)
     
         # LUT read port
         self.r = self.LUT.read_port(transparent=False)
@@ -49,20 +50,26 @@ class tuner_slice(Elaboratable):
         # LUT with 1/4 cycle sine
         m.submodules.r = self.r
         m.d.comb += self.r.addr.eq(addr)
-        sincos_raw = Signal(signed(self.dsz))
+        sincos_raw = Signal(signed(self.ssz))
         m.d.comb += sincos_raw.eq(self.r.data)
         
         # sign inversion to get full wave
-        sincos = Signal(signed(self.dsz))
-        m.d.sync += sincos.eq(Mux(sincos_sign, -sincos_raw, sincos_raw))
+        sincos_p = Signal(signed(self.ssz))
+        sincos_sign_d1 = Signal()
+        sincos = Signal(signed(self.ssz))
+        m.d.sync += [
+            sincos_sign_d1.eq(sincos_sign),
+            sincos_p.eq(sincos_raw),
+            sincos.eq(Mux(sincos_sign_d1, -sincos_raw, sincos_p))
+        ]
         
         # signed multiply input by sinusoid
-        product = Signal(signed(2*self.dsz))
+        product = Signal(signed(self.dsz+self.ssz))
         m.d.sync += product.eq(self.input * sincos)
         
         # round off
         prod_rnd = Signal(signed(self.dsz+1))
-        m.d.sync += prod_rnd.eq((product[self.dsz-2:] + 1)//2)
+        m.d.sync += prod_rnd.eq((product[self.ssz-2:] + 1)//2)
         
         # saturate not needed here?
         m.d.comb += self.output.eq(prod_rnd[:-1])

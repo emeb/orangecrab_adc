@@ -22,7 +22,8 @@ module ddc_14 #(
     input ns_ena,
     output reg [6:0] sathld,
     output valid,
-    output signed [osz-1:0] i_out, q_out
+    output signed [osz-1:0] i_out, q_out,
+    output diag
 );
 	//------------------------------
     // look up sample rate
@@ -105,7 +106,9 @@ module ddc_14 #(
         .x(tuner_i),	        // Input data
         .y(cic_i),	            // Output data
         .valid(cic_v)			// Output Valid
-    );	
+    );
+    
+    assign diag = cic_i[cicsz-1];
 
 	//------------------------------
     // Q cic decimator instance

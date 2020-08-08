@@ -6,7 +6,8 @@ VPATH = ../src/
 
 SRC =	ocadc.v ../src/ddc_14.v ../src/tuner_2.v ../src/tuner_slice_1k.v \
         ../src/cic_dec_4.v ../src/sat_flag.v ../src/sat.v ../src/fir8dec_par.v \
-        ../src/pdm_dac.v
+        ../src/demods.v ../src/r2p.v ../src/dcb.v ../src/pdm_dac.v \
+        ../src/sine_osc.v
 
 # project stuff
 PROJ = ocadc

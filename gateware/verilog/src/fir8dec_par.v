@@ -53,6 +53,7 @@ module fir8dec_par #(
         if(reset == 1'b1)
         begin
             state <= `sm_wait;
+            ena_d1 <= 1'b0;
             mac_ena <= 1'b0;
             dump <= 1'b0;
             r_addr <= {psz+1{1'd0}};
@@ -61,11 +62,12 @@ module fir8dec_par #(
         end
         else
         begin
+            ena_d1 <= ena;
             case(state)
                 `sm_wait :
                 begin
                     // halt and hold
-                    if(w_addr[2:0] == 3'b111)
+                    if(ena_d1 & (w_addr[2:0] == 3'b111))
                     begin
                         // start a MAC sequence every 8 samples
                         state <= `sm_mac;

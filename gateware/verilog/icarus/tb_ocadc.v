@@ -5,7 +5,7 @@
 `default_nettype none
 
 module tb_ocadc;
-    reg clk_adc;
+    reg CLK, clk_adc;
 	reg start;
 	reg err;
 	real phs, frq;
@@ -14,6 +14,10 @@ module tb_ocadc;
 	wire LED1, LED2, LED3;
 	reg BTN_N;
     wire RST_N;
+    
+    // 48MHz clock source
+    always
+        #10.417 CLK = ~CLK;
     
     // 40MHz clock source
     always
@@ -28,6 +32,7 @@ module tb_ocadc;
 `endif
         
         // init regs
+        CLK = 1'b0;
         clk_adc = 1'b0;
 		phs = 0;
 		frq = 6.2832*1.441e6/50e6;
@@ -58,7 +63,7 @@ module tb_ocadc;
 	
     // Unit under test
 	ocadc uut(
-		// rxadc board interface on PMODs P403, P404
+        .CLK(CLK),
 		.clk_adc(clk_adc),
 		.adc_data(adc_data),
 		

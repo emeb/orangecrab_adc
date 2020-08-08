@@ -46,17 +46,20 @@ module tuner_slice_1k #(
     
     // invert sign of lut output and delay to align
     reg signed [15:0] sincos_p, sincos;
+    reg sincos_sign_d1;
     always @(posedge clk)
     begin
         if(reset == 1'b1)
         begin
-            sincos_p <= 16'h0000;
             sincos <= 16'h0000;
+            sincos_p <= 16'h0000;
+            sincos_sign_d1 <= 0;
         end
         else
         begin
-            sincos_p <= sincos_sign ? -sincos_raw : sincos_raw;
-            sincos <= sincos_p;
+            sincos_sign_d1 <= sincos_sign;
+            sincos_p <= sincos_raw;
+            sincos <= sincos_sign_d1 ? -sincos_p : sincos_p;
         end
     end
     
