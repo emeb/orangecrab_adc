@@ -37,5 +37,5 @@ August 2020.
 is working for simple AM broadcast reception. Audio output sounds great -
 very clean and clear. 
 
-![assembled board](doc/ocadc_assembled.png)
+![assembled board](doc/ocadc_assembled.jpg)
 
