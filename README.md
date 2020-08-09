@@ -26,12 +26,8 @@ The board comprises the following components:
 
 ## Status
 * 2020-07-24: The preliminary board design is complete and boards have been
-ordered from OSHPark.
-
-https://oshpark.com/shared_projects/NWB6ksVr
-
-Parts have been ordered so initial testing should occurr sometime in early
-August 2020.
+ordered from OSHPark. Parts have been ordered so initial testing should occurr
+sometime in early August 2020.
 
 * 2020-08-08: Boards are back from OSHpark and the preliminary test gateware
 is working for simple AM broadcast reception. Audio output sounds great -
@@ -39,3 +35,6 @@ very clean and clear.
 
 ![assembled board](doc/ocadc_assembled.jpg)
 
+* 2020-08-09: Corrected missing mount holes in PCB. Updated OSHpark link
+
+https://oshpark.com/shared_projects/GzvQCkin
