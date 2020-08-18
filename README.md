@@ -38,3 +38,7 @@ very clean and clear.
 * 2020-08-09: Corrected missing mount holes in PCB. Updated OSHpark link
 
 https://oshpark.com/shared_projects/GzvQCkin
+
+* 2020-08-18: Added Litex-based controller project
+
+https://github.com/emeb/OrangeCrab-Litex-ADC
